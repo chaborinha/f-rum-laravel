@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\login;
 
 use App\Http\Controllers\Controller;
+use App\Services\Operations;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
@@ -32,7 +32,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->route('index');
+            return Operations::role_user();
         }
 
         return back()->withErrors([

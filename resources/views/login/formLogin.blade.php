@@ -20,7 +20,11 @@
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-primary btn-lg w-100">Login</button>
+            <button type="submit" class="btn btn-primary btn-lg w-100 mt-3">Login</button>
         </form>
+        
+        <div class="mt-3">
+            <a href="{{ route('user.create') }}" class="text-dark">Ainda não tem uma conta? Registre-se</a>
+        </div>
     </div>
 @endsection
