@@ -26,4 +26,5 @@ Route::middleware('auth')->group(function () {
     ## post's routers
     Route::get('/register-post', [PostController::class, 'create'])->name('post.create');
     Route::post('/submit-post', [PostController::class, 'store'])->name('post.store');
+    Route::get('/post/{id}', [PostController::class, 'show'])->name('post.show');
 });
