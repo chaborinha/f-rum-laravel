@@ -3,20 +3,16 @@
 @section('content')
     @include('include/navbar')
 
-    <!-- Container para os Posts -->
     <div class="container mt-5 pt-4">
         <h2 class="mb-4">Posts</h2>
 
-        <!-- Row para a Grid de Posts -->
         <div class="row">
             @foreach ($posts as $post)
-                <!-- Card para Cada Post -->
                 <div class="col-md-4 mb-4">
                     <div class="card custom-card">
-                        <!-- Cabeçalho do Card (Título do Post) -->
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <h5 class="card-title mb-0">{{ $post->title }}</h5>
-                            <!-- Dropdown de Opções (Editar, Excluir) na parte superior direita -->
+                            @if($user->id == $post->user_id)
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-outline-primary" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                     Opções
@@ -26,17 +22,13 @@
                                     <li><a class="dropdown-item" href="#">Excluir</a></li>
                                 </ul>
                             </div>
+                            @endif
                         </div>
-
-                        <!-- Corpo do Card (Conteúdo do Post) -->
                         <div class="card-body">
-                            <p class="card-text">{{ Str::limit($post->body, 150) }}</p> <!-- Exibe um resumo do corpo -->
+                            <p class="card-text">{{ Str::limit($post->body, 150) }}</p>
                         </div>
-
-                        <!-- Rodapé do Card (Botões de Ação) -->
                         <div class="card-footer text-center">
-                            <!-- Botão Comentar -->
-                            <a href="#" class="btn btn-info btn-sm">Comentar</a>
+                            <a href="{{route('post.show', $post->id)}}" class="btn btn-info btn-sm">Ver comentarios</a>
                         </div>
                     </div>
                 </div>

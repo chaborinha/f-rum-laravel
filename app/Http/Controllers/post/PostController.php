@@ -15,6 +15,17 @@ class PostController extends Controller
 
     }
 
+    public function show($id)
+    {
+        if (Auth::id()):
+            $post = Post::find($id);
+            return view('post/show', 
+            ['post' => $post]);
+        else:
+            dd('erro');
+        endif;
+    }
+
     public function create()
     {
         return view('post/create');

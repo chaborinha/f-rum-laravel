@@ -17,7 +17,7 @@ class UserController extends Controller
     {
         $id_profile = Auth::id();
         $user = User::find($id_profile);
-        $posts = Post::where('user_id', $id_profile)->get();
+        $posts = Post::all();
 
         return view('user/index', ['user' => $user, 'posts' => $posts]);
     }
