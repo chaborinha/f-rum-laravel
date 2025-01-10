@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\login\LoginController;
+use App\Http\Controllers\post\PostController;
 use App\Http\Controllers\user\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,4 +22,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     ## user's routers
     Route::get('/', [UserController::class, 'index'])->name('user.index');
+
+    ## post's routers
+    Route::get('/register-post', [PostController::class, 'create'])->name('post.create');
+    Route::post('/submit-post', [PostController::class, 'store'])->name('post.store');
 });
