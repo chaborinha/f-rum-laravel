@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -16,8 +17,9 @@ class UserController extends Controller
     {
         $id_profile = Auth::id();
         $user = User::find($id_profile);
+        $posts = Post::where('user_id', $id_profile)->get();
 
-        return view('user/index', ['user' => $user]);
+        return view('user/index', ['user' => $user, 'posts' => $posts]);
     }
 
     public function create(): View

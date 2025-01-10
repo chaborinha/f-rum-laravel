@@ -22,16 +22,14 @@
 
     .navbar-nav .nav-link:hover,
     .navbar-nav .dropdown-toggle:hover {
-        background-color: #6a1b9a !important; /
+        background-color: #6a1b9a !important;
         color: white;
     }
 
-    
     .navbar-nav .nav-item {
         border: none !important;
     }
 
-    
     .navbar-nav .nav-item .btn {
         font-size: 1.2rem;
         padding: 10px 20px;
@@ -46,7 +44,7 @@
     }
 
     .navbar-nav .nav-item .btn i {
-        font-size: 1.5rem; /
+        font-size: 1.5rem; 
         margin-right: 8px; 
     }
 
@@ -91,15 +89,10 @@
                     <li class="nav-item">
                         <a class="nav-link text-light" href="#">Início</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Notícias
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{{ route('post.create') }}">
+                            Novo Post
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Página 1</a></li>
-                            <li><a class="dropdown-item" href="#">Página 2</a></li>
-                            <li><a class="dropdown-item" href="#">Página 3</a></li>
-                        </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
