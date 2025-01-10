@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\comment\CommentController;
 use App\Http\Controllers\login\LoginController;
 use App\Http\Controllers\post\PostController;
 use App\Http\Controllers\user\UserController;
@@ -27,4 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/register-post', [PostController::class, 'create'])->name('post.create');
     Route::post('/submit-post', [PostController::class, 'store'])->name('post.store');
     Route::get('/post/{id}', [PostController::class, 'show'])->name('post.show');
+
+    ## comment's routers
+    Route::get('/comment', [CommentController::class, 'create'])->name('comment.create');
+    Route::post('create-comment', [CommentController::class, 'store'])->name('comment.store');
 });

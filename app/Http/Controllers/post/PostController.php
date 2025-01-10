@@ -4,8 +4,9 @@ namespace App\Http\Controllers\post;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostRequest;
+use App\Models\Comment;
 use App\Models\Post;
-use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
@@ -17,10 +18,19 @@ class PostController extends Controller
 
     public function show($id)
     {
-        if (Auth::id()):
+        $id_user = Auth::id();
+        if ($id_user):
+
+            $user = User::find($id_user);
+
             $post = Post::find($id);
+
+            $comments = Comment::all();
+            
             return view('post/show', 
-            ['post' => $post]);
+            ['post' => $post,
+            'user' => $user,
+            'comments' => $comments,]);
         else:
             dd('erro');
         endif;
