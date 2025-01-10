@@ -87,7 +87,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">Início</a>
+                        <a class="nav-link text-light" href="{{ route('user.index') }}">Início</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light" href="{{ route('post.create') }}">
@@ -99,9 +99,9 @@
                             Recursos
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Página 1</a></li>
-                            <li><a class="dropdown-item" href="#">Página 2</a></li>
-                            <li><a class="dropdown-item" href="#">Página 3</a></li>
+                            <li><a class="dropdown-item" href="#">Usuários</a></li>
+                            <li><a class="dropdown-item" href="user.index">Posts</a></li>
+                            <li><a class="dropdown-item" href="#">Novo</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
