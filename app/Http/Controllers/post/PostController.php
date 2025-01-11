@@ -13,27 +13,26 @@ class PostController extends Controller
 {
     public function index()
     {
-
+        // Implementação da listagem de posts (se necessário)
     }
 
     public function show($id)
     {
         $id_user = Auth::id();
-        if ($id_user):
-
+        if ($id_user) {
             $user = User::find($id_user);
-
             $post = Post::find($id);
 
-            $comments = Comment::all();
-            
-            return view('post/show', 
-            ['post' => $post,
-            'user' => $user,
-            'comments' => $comments,]);
-        else:
-            dd('erro');
-        endif;
+            $comments = Comment::where('post_id', $id)->with('user')->paginate(4);
+
+            return view('post/show', [
+                'post' => $post,
+                'user' => $user,
+                'comments' => $comments,
+            ]);
+        } else {
+            abort(403, 'Unauthorized');
+        }
     }
 
     public function create()
@@ -44,20 +43,19 @@ class PostController extends Controller
     public function store(StorePostRequest $request)
     {
         $validated = $request->validated();
-
         $id_user = Auth::id();
 
         $created_post = Post::create([
             'user_id' => $id_user,
             'title' => $request->title,
             'body' => $request->body,
-            'created_at' => date('Y-m-d H:m:s')
+            'created_at' => now(),
         ]);
 
-        if ($created_post):
+        if ($created_post) {
             return redirect()->route('user.index');
-        else:
-            dd('morte');
-        endif;
+        } else {
+            abort(500, 'Post creation failed');
+        }
     }
 }
